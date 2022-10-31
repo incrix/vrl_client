@@ -1,0 +1,24 @@
+.Navbar{
+    background-color: #fff;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logoImg{
+    height: 40px;
+    width: 40px;
+}
+.logoTxt{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    color: #04091D;
+}

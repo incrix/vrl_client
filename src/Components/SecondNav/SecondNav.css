@@ -1,0 +1,21 @@
+.SecondNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.loginLabel{
+    width: 120px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginTxt{
+    font-size: 18px;
+    font-weight: 400;
+    color: #04091D;
+}
