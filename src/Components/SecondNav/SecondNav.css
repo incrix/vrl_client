@@ -1,7 +1,4 @@
 .SecondNav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 50px;
 }
 
@@ -18,4 +15,21 @@
     font-size: 18px;
     font-weight: 400;
     color: #04091D;
+}
+
+.mainRoot{
+    display: flex;
+    height: 100%;
+    float: right;
+}
+
+.mainRoot > button{
+    width: 120px;
+    height: 100%;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
 }

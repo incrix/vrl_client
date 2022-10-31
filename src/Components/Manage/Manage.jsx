@@ -13,7 +13,7 @@ function Manage() {
             <img src={CustomerIcon} alt="" />
             <div className='manageItemLabel'>Customer</div>
         </Link>
-        <Link to="" className='manageItem'>
+        <Link to="/payment" className='manageItem'>
             <img src={PaymentIcon} alt="" />
             <div className='manageItemLabel'>Payment</div>
         </Link>
