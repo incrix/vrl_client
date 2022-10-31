@@ -1,18 +1,16 @@
-import React from 'react';
-import './App.css';
-import Login from './Components/Login/Login';
-import Navbar from './Components/Navbar/Navbar';
-import SecondNav from './Components/SecondNav/SecondNav';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Login from "./Components/Login/Login";
+
+import Manage from "./Components/Manage/Manage";
 
 function App() {
   return (
-    <div className="App"> 
-      <Navbar />
-      <SecondNav />
-      <main>
-        <Login />
-      </main>
-    </div>
+    <Routes>
+          <Route path="/" element={<Manage />} />
+          <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 

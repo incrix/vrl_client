@@ -56,7 +56,9 @@ input{
     color: white;
     font-weight: 700;
     font-size: 20px;
+    line-height: 26px;
     width: 120px;
     height: 40px;
+    padding: 7px 0;
     margin: 15px 0 35px 0;
 }
