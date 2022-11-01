@@ -1,0 +1,30 @@
+.CustomerItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #F1F1F1;
+    padding: 20px;
+    font-size: 22px;
+}
+
+.CustomerItem h6 {
+    width: 130px !important;
+    overflow-x: scroll;
+  }
+
+.CustomerItem button{
+    border: none;
+    outline: none;
+    width: 70px;
+    height: 30px;
+    color: white;
+    background: #022964;
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    margin-left: 0 10px;
+    cursor: pointer;
+}

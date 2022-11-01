@@ -1,0 +1,23 @@
+.Customer{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s ease;
+}
+
+.Customer-content{
+    width: 70%;
+    min-height: 70%;
+    max-height: 80%;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    transition: all 1s ease;
+}
+
+.Customer-content::-webkit-scrollbar {
+    display: none;
+  }

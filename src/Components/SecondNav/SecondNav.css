@@ -33,3 +33,20 @@
     border: none;
     cursor: pointer;
 }
+
+.indexLabel{
+    display: inline;
+    padding: 0 30px;
+}
+
+.indexLabel > button{
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.indexLabel > button > img{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

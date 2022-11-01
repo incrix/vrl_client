@@ -58,3 +58,7 @@
     margin-left: 0 10px;
     cursor: pointer;
 }
+
+h6::-webkit-scrollbar {
+    display: none;
+  }

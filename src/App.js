@@ -7,6 +7,8 @@ import Navbar from "./Components/Navbar/Navbar";
 import SecondNav from "./Components/SecondNav/SecondNav";
 import Manage from "./Components/Manage/Manage";
 import Product from "./Components/Products/Product";
+import Customer from "./Components/Customer/Customer";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
 
@@ -22,6 +24,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/customer" >
+            <Route index element={<Customer />} />
+            <Route path=":id" element={<Profile />} />
+          </Route>
         </Routes>
       </main>
     </>
