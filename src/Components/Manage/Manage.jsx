@@ -9,7 +9,7 @@ import ProductIcon from '../../images/icons/product-logo.png'
 function Manage() {
   return (
     <div className='Manage'>
-        <Link to="" className='manageItem'>
+        <Link to="customer" className='manageItem'>
             <img src={CustomerIcon} alt="" />
             <div className='manageItemLabel'>Customer</div>
         </Link>
@@ -17,11 +17,11 @@ function Manage() {
             <img src={PaymentIcon} alt="" />
             <div className='manageItemLabel'>Payment</div>
         </Link>
-        <Link to="" className='manageItem'>
+        <Link to="analytics" className='manageItem'>
             <img src={AnalyticsIcon} alt="" />
             <div className='manageItemLabel'>Analytics</div>
         </Link>
-        <Link to="" className='manageItem'>
+        <Link to="product" className='manageItem'>
             <img src={ProductIcon} alt="" />
             <div className='manageItemLabel'>Product</div>
         </Link>

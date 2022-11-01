@@ -1,4 +1,6 @@
 .PaymentHead {
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 60px;
   background-color: #f9f8f8;
@@ -13,7 +15,6 @@
 
 .PaymentHead h6 {
   width: 130px;
-  overflow-x: scroll;
 }
 
 .search {
@@ -49,4 +50,5 @@
   line-height: 20px;
   font-weight: 700;
   margin-left: 0 10px;
+  cursor: pointer;
 }

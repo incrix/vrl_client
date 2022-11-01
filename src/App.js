@@ -5,8 +5,8 @@ import Login from "./Components/Login/Login";
 import Payment from "./Components/Payment/Payment";
 import Navbar from "./Components/Navbar/Navbar";
 import SecondNav from "./Components/SecondNav/SecondNav";
-
 import Manage from "./Components/Manage/Manage";
+import Product from "./Components/Products/Product";
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
           <Route path="/" element={<Manage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/product" element={<Product />} />
         </Routes>
       </main>
     </>

@@ -1,5 +1,7 @@
-.paymentItem{
+.ProductAdd{
     display: flex;
+    position: static;
+    top: 0;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -7,54 +9,45 @@
     background-color: #F1F1F1;
     padding: 20px;
     font-size: 22px;
+    transition: all 1s ease;
 }
 
-.paymentItem h6 {
-    width: 130px !important;
+.ProductAdd h6 {
+    width: 130px;
     overflow-x: scroll;
-  }
-
-.paymentInput{
-    display: flex;
-    justify-content: flex-end;
-    width: 300px !important;
 }
 
-.paymentInput div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-    background-color: #fff;
-}
-
-.paymentInput input{
+.inputProduct{
+    width: 130px;
     border: none;
     outline: none;
-    width: 150px;
     height: 30px;
     background-color: #fff;
     color: #4F4F4F;
     background: #FFFFFF;
-    font-size: 16px;
+    font-size: 12px !important;
     border: 2px 2px 2px 0 solid #DDDDDD;
     padding: 0 10px;
     margin-right: 10px;
+    transition: all 1s ease;
 }
 
-.paymentInput button{
+.inputImg{
+    width: 300px;
+}
+
+
+.ProductAdd button{
     border: none;
     outline: none;
     width: 70px;
     height: 30px;
     color: white;
     background: #022964;
-    padding: 0 10px;
     font-size: 16px;
     line-height: 20px;
     font-weight: 700;
     margin-left: 0 10px;
     cursor: pointer;
+    transition: all 1s ease;
 }
