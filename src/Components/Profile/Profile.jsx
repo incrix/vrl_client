@@ -1,11 +1,23 @@
-import React from 'react'
-import { useParams } from "react-router-dom"
+import React, { useEffect } from "react";
+// import { useParams } from "react-router-dom"
+import "./Profile.css";
+import ProfileData from "./ProfileData";
+import ProfileDetails from "./ProfileDetails";
 
-function Profile() {
-  let params = useParams()
+function Profile({ setPageTitle }) {
+  // const {id} = useParams();
+  useEffect(() => {
+    setPageTitle("Avinash");
+  });
+
   return (
-    <div>Profile{params.id}</div>
-  )
+    <div className="Profile">
+      <div className="profile-content">
+        <ProfileData />
+        <ProfileDetails />
+      </div>
+    </div>
+  );
 }
 
-export default Profile
+export default Profile;

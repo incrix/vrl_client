@@ -1,0 +1,66 @@
+.ProfileData{
+    width: 350px;
+    height: 80%;
+    background-color: #F1F1F1;
+    padding: 10px 15px;
+}
+
+.profileDataItem{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 10px;
+    margin: 15px 0;
+}
+
+.profileDataItem label{
+    font-size: 16px;
+    font-weight: 500;
+    color: #4F4F4F;
+    margin-bottom: 10px;
+}
+
+.profileDataItem input, select{
+    font-size: 14px;
+    font-weight: 500;
+    color: #4F4F4F;
+    background-color: #fff;
+    border: none;
+    margin: 0;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.profileDataItem input:disabled, select:disabled{
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.button button{
+    width: 80px;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.editButton, .saveButton{
+    background-color: #022964;
+    color: white;
+}
+
+.cancelButton{
+    background-color: transparent;
+    color: red;
+    border: 2px solid red !important;
+}

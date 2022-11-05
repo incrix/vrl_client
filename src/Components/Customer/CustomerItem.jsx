@@ -2,8 +2,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './CustomerItem.css'
 
+
 function CustomerItem(props) {
   const { name, phone, id } = props.data;
+  
   let navigate = useNavigate();
   const routeCustomer = ()=>{
     navigate(`/customer/${id}`);
