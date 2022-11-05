@@ -10,6 +10,7 @@ import Product from "./Components/Products/Product";
 import Customer from "./Components/Customer/Customer";
 import Profile from "./Components/Profile/Profile";
 import Context from './Components/Context';
+import Billing from "./Components/Billing/Billing";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
             <Route index element={<Customer />} />
             <Route path=":id" element={<Profile setPageTitle={setPageTitle}/>} />
           </Route>
+          <Route path="/billing" element={<Billing />} />
         </Routes>
       </main>
     </>

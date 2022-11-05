@@ -1,11 +1,11 @@
 import React from 'react'
 import './ProfileDetailsHead.css'
 
-function ProfileDetailsHead() {
+function ProfileDetailsHead({setProductState, productValue}) {
   return (
     <div className='ProfileDetailsHead'>
-      <button>Purchase</button>
-      <button>Payment</button>
+      <button style={productValue ? {color:"#022964"}: {}} onClick = {()=> {setProductState(true)}}>Purchase</button>
+      <button style={!productValue ? {color:"#022964"}: {}} onClick = {()=> {setProductState(false)}}>Payment</button>
     </div>
   )
 }

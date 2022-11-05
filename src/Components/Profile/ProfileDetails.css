@@ -1,6 +1,6 @@
 .ProfileDetails{
     width: calc(100% - 370px);
-    height: 80%;
+    height: 80% !important;
     margin-left: 20px;
 }
 
