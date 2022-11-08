@@ -1,0 +1,41 @@
+.BillingHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F9F8F8;
+    height: 60px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.BillingHead h6{
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: 700;
+}
+
+.sno{
+    width: 30px;
+}
+
+.bill-product{
+    width: 140px;
+}
+
+.bill-quantity{
+    width: 100px;
+}
+
+.bill-price{
+    width: 100px;
+}
+
+.bill-total{
+    width: 100px;
+    text-align: center;
+}
+
+.bill-delete{
+    width: 80px;
+    text-align: center;
+}

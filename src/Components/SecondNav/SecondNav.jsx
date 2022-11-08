@@ -30,7 +30,7 @@ function SecondNav(props) {
         ""
       )}
 
-      { pathName !== "/login" && pathName !== "/" ? (
+      { pathName !== "/login" && pathName !== "/" && pathName !== "/billing" ? (
         <div className="indexLabel">
           <button onClick={()=> navigate(-1)}><img src={BackIcon} alt="" /></button>
           {loc.length !== 3 ?<span className="pageTitle">{pathTitle}</span> : <span className="pageTitle">{profileName.pageTitle}</span>}

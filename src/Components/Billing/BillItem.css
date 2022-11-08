@@ -1,0 +1,57 @@
+.BillItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    width: 100%;
+    height: 60px;
+    background: #F1F1F1;
+}
+
+.BillItem input{
+    font-size: 16px;
+    height: 40px;
+    padding: 0 3px;
+    font-weight: 500;
+    color: #000;
+}
+
+.BillItem h6{
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+}
+
+.BillItem button{
+    background: transparent;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.product-sno{
+    width: 30px;
+}
+
+.product-name{
+    width: 140px;
+}
+
+.product-quantity{
+    width: 100px;
+}
+
+.product-price{
+    width: 100px;
+}
+
+.product-total{
+    width: 100px;
+}
+
+.delete-btn{
+    width: 80px;
+}

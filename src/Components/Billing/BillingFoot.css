@@ -1,0 +1,67 @@
+.BillingFoot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.BillingFoot button{
+    border: none;
+    outline: none;
+    width: 180px;
+    height: 60px;
+    color: white;
+    background: #022964;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.amount-paid label{
+    font-size: 18px;
+    font-weight: 700;
+    color: #4f4f4f;
+    margin-right: 10px;
+}
+
+.amount-paid{
+    background-color: #F9F8F8;
+    height: 60px;
+    padding: 0 20px;
+}
+
+.amount-paid input{
+    font-size: 18px;
+    font-weight: 700;
+    color: #4f4f4f;
+    width: 100px;
+    height:40px;
+    padding: 0 5px;
+}
+
+.grand-total label{
+    font-size: 18px;
+    font-weight: 700;
+    color: #4f4f4f;
+    margin-right: 10px;
+}
+
+.grand-total h6{
+    font-size: 20px;
+    font-weight: 700;
+    color: #4f4f4f;
+    width: 120px;
+    text-align: end;
+}
+
+.grand-total{
+    background-color: #F9F8F8;
+    height: 60px;
+    padding: 0 20px;
+}
