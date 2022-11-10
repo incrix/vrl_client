@@ -14,8 +14,9 @@ function Billing() {
 
   useEffect(() => {
     scrollToBottom()
-    setGrandTotal(newBillItems.reduce((acc, item) => acc + item.Total, 0));
-  }, [ billItems, newBillItems, grandTotal]);
+    setGrandTotal(billItems.reduce((acc, item) => acc + item.Total, 0));
+  }, [ billItems, grandTotal]);
+
   useEffect(() => {
     setBillItems(newBillItems);
   }, [newBillItems]);
@@ -51,6 +52,7 @@ function Billing() {
 
   const clearBillItems = () => {
     setBillItems([]);
+    setGrandTotal(0);
   };
 
   const removeBillItem = useCallback((index) => {

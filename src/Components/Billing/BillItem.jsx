@@ -35,6 +35,7 @@ function BillItem({
   };
 
   const handleProductQuantity = (e) => {
+
     if(!isNaN(e.target.value) && e.target.value !== ''){
     billItem.Quantity = parseFloat(e.target.value);
     setQuantity(parseFloat(e.target.value));
@@ -62,12 +63,14 @@ function BillItem({
         className="product-quantity"
         onChange={(e) => handleProductQuantity(e)}
         value={quantity}
+        onWheel={ event => event.currentTarget.blur() }
       />
       <input
         type="number"
         className="product-price"
         onChange={(e) => handleProductPrince(e)}
         value={price}
+        onWheel={ event => event.currentTarget.blur() }
       />
       <button
         className="delete-btn"
