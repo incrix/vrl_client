@@ -8,8 +8,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [iserror, setIserror] = useState(false);
-  console.log(email, password);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     const payload = {

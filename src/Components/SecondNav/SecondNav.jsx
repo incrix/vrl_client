@@ -10,7 +10,8 @@ function SecondNav(props) {
   const profileName = useContext(ProfileNameContext);
   const loc = pathName.split("/");
   const pathTitle = capitalizeFirstLetter(loc[1]);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  
 
   const routeManage = () => {
     navigate("/");

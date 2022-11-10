@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Billing.css";
 import BillingControl from "./BillingControl";
 import BillingHead from "./BillingHead";
 import BillItem from "./BillItem";
 import BillingFoot from "./BillingFoot";
+import VerifyAdmin from "../VerifyAdmin";
 
 function Billing() {
   const [billItems, setBillItems] = useState([]);
@@ -11,6 +13,19 @@ function Billing() {
   const [itemChild, setItemChild] = useState();
   const [grandTotal, setGrandTotal] = useState(0);
   const elementRef = useRef(null)
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+    VerifyAdmin().then((isvalid) => {
+      if (!isvalid || isvalid instanceof Error) {
+        navigate("/login");
+      }
+    });
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     scrollToBottom()
