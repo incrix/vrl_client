@@ -8,7 +8,7 @@ function Navbar(props) {
   const pathName = props.pathName;
   let navigate = useNavigate();
   const logout = ()=>{
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
     navigate('/login');
   }
   return (
