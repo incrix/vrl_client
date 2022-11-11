@@ -1,22 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import './ProfilePaymentList.css'
 
 function ProfilePaymentList() {
+  const { id } = useParams();
+  const token = localStorage.getItem("token");
+  const [paymentList, setPaymentList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5050/api/admin/payment/list", {
+      method: "Post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ customerId: id }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setPaymentList(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      // eslint-disable-next-line
+  }, []);
+
   return (
     <div className='ProfilePaymentList'>
-      <PaymentListItem />
-      <PaymentListItem />
-      <PaymentListItem />
+      {paymentList.length ? paymentList.map((item)=>{
+        return <PaymentListItem key={item._id} data={item}/>
+      }): <div className="noPayment"> No Payment Available</div>}
     </div>
   )
 }
 
-function PaymentListItem(){
+function PaymentListItem({data}){
   return(
     <div className="ListItem">
-      <h6>sdnahduqxxksnql</h6>
-      <h6>Date: {"12-06-2022"}</h6>
-      <h6>Paid: {"₹ " + 200}</h6>
+      <h6>{data._id}</h6>
+      <h6>Date: {data.date.slice(0,10)}</h6>
+      <h6>Paid: {"₹ " + data.amount}</h6>
     </div>
   );
 }

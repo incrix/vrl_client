@@ -1,71 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./ProfileProductList.css";
-import DownIcon from "../../images/icons/down-icon.svg";
-import UpIcon from "../../images/icons/up-icon.svg";
+import ProductListItem from './ProductListItem'
 
 function ProfileProductList() {
+  const { id } = useParams();
+  const token = localStorage.getItem("token");
+  const [productList, setProductList] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5050/api/admin/purchase/list", {
+      method: "Post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ customerId: id }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setProductList(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      // eslint-disable-next-line
+  }, []);
   return (
     <div className="ProfileProductList">
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
-      <ProductListItem />
+      {productList.length !== 0? productList.map((item)=>{
+        return <ProductListItem key={item._id} data={item} />;
+      }): <div className="noPurchase">No Purchase Available</div>}
     </div>
   );
 }
 
-function ProductListItem() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  return (
-    <div className="ProductListItem">
-      <div className="ProductListItemHead">
-        <h6>asjbxbuquhudhux</h6>
-        <h6>{"₹ " + 450}</h6>
-        {isExpanded ? (
-          <button onClick={() => setIsExpanded(false)}>
-            Collapse <img src={UpIcon} alt="" />
-          </button>
-        ) : (
-          <button onClick={() => setIsExpanded(true)}>
-            Expand <img src={DownIcon} alt="" />
-          </button>
-        )}
-      </div>
-      {!isExpanded ? "" : <div className="ProductListItemBody">
-        <div className="ListItemHead">
-            <h6>Product</h6>
-            <h6>Quantity</h6>
-            <h6>Price</h6>
-            <h6>Total</h6>
-        </div>
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <div className="ListItemFoot">
-            <h6>{'Date:'+' 12-06-2022'}</h6>
-            <h6>{'Total: ₹'+' 240'}</h6>
-            <h6>{'Paid: ₹'+' 200'}</h6>
-        </div>
-        </div>}
-    </div>
-  );
 
-  function ListItem() {
-    return (
-        <div className="ListItemBody">
-          <h6>Cow Dung</h6>
-          <h6>2</h6>
-          <h6>{"₹ " + 40}</h6>
-          <h6>{"₹ " + 80}</h6>
-        </div>
-    );
-  }
-
-}
 
 export default ProfileProductList;

@@ -2,18 +2,12 @@ import React from 'react'
 import CustomerItem from './CustomerItem'
 import './CustomerBody.css'
 
-function CustomerBody() {
+function CustomerBody({customerList}) {
   return (
     <div className='CustomerBody'>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
-        <CustomerItem data= { {name: "Avinash", phone: "9786799765", id: "12edb2ugs1gd276d"}}/>
+      {customerList.map((item)=>{
+        return <CustomerItem key={item._id} data= { {name: item.name, phone: item.phone, id: item._id}}/>
+      })}
     </div>
   )
 }

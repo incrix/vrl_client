@@ -1,4 +1,4 @@
-import React ,{useEffect} from 'react'
+import React ,{useEffect, useState} from 'react'
 import CustomerHead from './CustomerHead'
 import CustomerBody from './CustomerBody'
 import './Customer.css'
@@ -8,25 +8,50 @@ import VerifyAdmin from "../VerifyAdmin";
 function Customer() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const [customerList, setCustomerList] = useState([])
   useEffect(() => {
     if (!token) {
       navigate("/login");
     }
-    VerifyAdmin().then((isvalid) => {
-      if (!isvalid || isvalid instanceof Error) {
+    VerifyAdmin().then((isValid) => {
+      if (!isValid || isValid instanceof Error) {
         navigate("/login");
       }
     });
     // eslint-disable-next-line
   }, []);
+
+
+  useEffect(()=>{
+    fetch("http://localhost:5050/api/admin/customer/list", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      setCustomerList(data)
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+    // eslint-disable-next-line
+  },[])
+
+
+
   return (
     <div className='Customer'>
         <div className='Customer-content'>
             <CustomerHead />
-            <CustomerBody />
+            <CustomerBody customerList={customerList}/>
         </div>
     </div>
   )
 }
+
 
 export default Customer
