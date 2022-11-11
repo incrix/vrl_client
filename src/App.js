@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import "./App.css";
 import VerifyAdmin from "./Components/VerifyAdmin";
 import Login from "./Components/Login/Login";
@@ -17,26 +17,29 @@ import PageNotFound from "./Components/PageNotFound/PageNotFound";
 function App() {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [pageTitle, setPageTitle] = useState('');
-  const [isValid, setIsValid] = useState(false);
-  const { ProfileNameContext } = Context;
+  const { ProfileNameContext} = Context;
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    // eslint-disable-next-line
-    setIsValid(VerifyAdmin().then((isValid) => {
-      // eslint-disable-next-line
-      if (!isValid instanceof Error) {
-        return isValid
+    if (!token) {
+      navigate("/login");
+    }
+    VerifyAdmin().then((isValid) => {
+      if (!isValid || isValid instanceof Error) {
+        navigate("/login");
       }
-    }))
+    });
     // eslint-disable-next-line
   }, []);
 
   return (
     <>
       <Navbar pathName={location.pathname} />
-      {isValid ? <ProfileNameContext.Provider value={{pageTitle}}>
+      <ProfileNameContext.Provider value={{pageTitle}}>
         <SecondNav pathName={location.pathname} />
-      </ProfileNameContext.Provider> : <div className="duplicateNav"></div>}
+      </ProfileNameContext.Provider>
       <main>
         <Routes>
           <Route path="/" element={<Manage />} />

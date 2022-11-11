@@ -1,6 +1,11 @@
 const VerifyAdmin = async () => {
     const token = localStorage.getItem("token");
-    const isvalid = await fetch("http://localhost:5050/api/admin/verify", {
+
+    if(!token){
+      return false
+    }
+
+    const isValid = await fetch("http://localhost:5050/api/admin/verify", {
       method: "POST",
       body: JSON.stringify({
         admin: true,
@@ -18,7 +23,7 @@ const VerifyAdmin = async () => {
       .catch((error) => {
         return error;
       });
-    return isvalid;
+    return isValid;
   };
 
   export default VerifyAdmin;

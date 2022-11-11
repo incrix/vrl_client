@@ -35,8 +35,6 @@ function SecondNav(props) {
         <div className="indexLabel">
           <button onClick={()=> navigate(-1)}><img src={BackIcon} alt="" /></button>
           {loc.length !== 3 ?<span className="pageTitle">{pathTitle}</span> : <span className="pageTitle">{profileName.pageTitle}</span>}
-          {/* { pathName === "/product" ? <span className="pageTitle">Product</span>: "" }
-          { pathName === "/customer" ? <span className="pageTitle">Customer</span>: "" } */}
         </div>
       ) : (
         ""

@@ -14,8 +14,8 @@ function Product() {
     if (!token) {
       navigate("/login");
     }
-    VerifyAdmin().then((isvalid) => {
-      if (!isvalid || isvalid instanceof Error) {
+    VerifyAdmin().then((isValid) => {
+      if (!isValid || isValid instanceof Error) {
         navigate("/login");
       }
     });
