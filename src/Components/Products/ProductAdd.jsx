@@ -6,6 +6,7 @@ function ProductAdd(props) {
   const [productName, setProductName] = useState("");
   const {
     stateChange: { setAddProduct, addProduct },
+    getProductList
   } = props;
 
   const token = localStorage.getItem("token");
@@ -22,7 +23,7 @@ function ProductAdd(props) {
     const formData = new FormData();
     formData.append("image", image);
 
-    const path = await fetch("/api/admin/product/upload", {
+    const path = await fetch(`${global.config.ROOT_URL}product/upload`, {
       method: "POST",
       body: formData,
       headers: {
@@ -37,9 +38,7 @@ function ProductAdd(props) {
         console.log(error);
       });
 
-    console.log(path);
-
-    fetch("http://localhost:5050/api/admin/product/add", {
+    fetch(`${global.config.ROOT_URL}product/add`, {
       method: "POST",
       body: JSON.stringify({
         name: productName,
@@ -47,19 +46,19 @@ function ProductAdd(props) {
         path,
       }),
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setAddProduct(!addProduct)
+        getProductList()
       })
       .catch((error) => {
         console.log(error);
       });
+      
   };
 
   return (

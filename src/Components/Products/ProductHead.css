@@ -1,7 +1,7 @@
 .ProductHead {
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 70%;
     height: 60px;
     background-color: #f9f8f8;
     display: flex;
@@ -14,7 +14,9 @@
   }
   
   .ProductHead h6 {
-    width: 130px;
+    width: 180px;
+    height: auto;
+    max-height: 55px;
   }
 
   .productAddBtn{
@@ -45,4 +47,8 @@
     margin-left: 0 10px;
     cursor: pointer;
     transition: all 0.5s ease;
+}
+
+.ProductHead> .search{
+  width: 220px;
 }

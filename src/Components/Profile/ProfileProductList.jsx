@@ -8,10 +8,9 @@ function ProfileProductList() {
   const token = localStorage.getItem("token");
   const [productList, setProductList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5050/api/admin/purchase/list", {
-      method: "Post",
+    fetch(`${global.config.ROOT_URL}purchase/list`, {
+      method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },

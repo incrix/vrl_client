@@ -4,10 +4,13 @@ import "./Profile.css";
 import ProfileData from "./ProfileData";
 import ProfileDetails from "./ProfileDetails";
 import VerifyAdmin from "../VerifyAdmin";
+import PopUp from "../PopUp";
 
 function Profile({ setPageTitle }) {
   const {id} = useParams();
   const [customer, setCustomer] = useState({})
+  const [isAlert, setIsAlert] = useState(false)
+  const [alertProp, setAlertProp] = useState({})
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -27,10 +30,9 @@ function Profile({ setPageTitle }) {
   });
 
   useEffect(()=>{
-    fetch("http://localhost:5050/api/admin/customer/details", {
-    method: "Post",
+    fetch(`${global.config.ROOT_URL}customer/details`, {
+    method: "POST",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
@@ -40,7 +42,6 @@ function Profile({ setPageTitle }) {
     .then((data) => {
       if(data.status === 200){
         setCustomer(data.customer);
-        
       }
     })
     .catch((error) => {
@@ -54,9 +55,10 @@ function Profile({ setPageTitle }) {
     
     <div className="Profile">
       <div className="profile-content">
-        <ProfileData />
+        <ProfileData setIsAlert={setIsAlert} setAlertProp={setAlertProp}/>
         <ProfileDetails balance={customer.balance}/>
       </div>
+      {isAlert ?<PopUp popup={alertProp} /> : ""}
     </div>
   );
 }

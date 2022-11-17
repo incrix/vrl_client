@@ -5,13 +5,12 @@ const VerifyAdmin = async () => {
       return false
     }
 
-    const isValid = await fetch("http://localhost:5050/api/admin/verify", {
+    const isValid = await fetch(`${global.config.ROOT_URL}verify`, {
       method: "POST",
       body: JSON.stringify({
         admin: true,
       }),
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },

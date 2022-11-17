@@ -23,10 +23,9 @@ function Customer() {
 
 
   useEffect(()=>{
-    fetch("http://localhost:5050/api/admin/customer/list", {
+    fetch(`${global.config.ROOT_URL}customer/list`, {
     method: "GET",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
@@ -46,7 +45,7 @@ function Customer() {
   return (
     <div className='Customer'>
         <div className='Customer-content'>
-            <CustomerHead />
+            <CustomerHead setCustomerList={setCustomerList}/>
             <CustomerBody customerList={customerList}/>
         </div>
     </div>

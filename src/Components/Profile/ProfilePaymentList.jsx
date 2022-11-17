@@ -8,10 +8,9 @@ function ProfilePaymentList() {
   const [paymentList, setPaymentList] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5050/api/admin/payment/list", {
+    fetch(`${global.config.ROOT_URL}payment/customer/list`, {
       method: "Post",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },

@@ -8,7 +8,7 @@ function CustomerItem(props) {
   
   let navigate = useNavigate();
   const routeCustomer = ()=>{
-    navigate(`/customer/${id}`);
+    navigate(`${id}`);
   }
   return (
     <div className='CustomerItem'>

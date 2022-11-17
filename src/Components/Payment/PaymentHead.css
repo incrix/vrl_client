@@ -19,7 +19,7 @@
 
 .search {
   display: flex;
-  width: 300px !important;
+  width: 300px;
   justify-content: flex-end;
 }
 
@@ -35,7 +35,6 @@
   border: 2px solid #dddddd;
   border-radius: 2px;
   padding: 0 10px;
-  margin-right: 10px;
 }
 
 .search > button {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./Login.css";
 
 function Login() {
@@ -16,19 +15,17 @@ function Login() {
       password,
     };
 
-    axios({
-      method: "post",
-      url: "http://localhost:5050/api/admin/login",
-      data: payload,
+    fetch(`${global.config.ROOT_URL}login`,{
+      method: "POST",
+      body: JSON.stringify(payload),
       headers: {
         // 'Authorization': `bearer ${token}`,
         "Content-Type": "application/json",
       },
-      json: true,
     })
-      .then(function (response) {
-        if (response.status === 201) {
-          const token = response.data.data.token;
+      .then((response) => response.json()).then((data) => {
+        if (data.status === 201) {
+          const token = data.data.token;
           if (token) {
             localStorage.setItem("token", token);
             navigate('/');

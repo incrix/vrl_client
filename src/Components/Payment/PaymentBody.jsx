@@ -1,28 +1,28 @@
-import React from 'react'
-import './Payment.css'
-import PaymentItem from './PaymentItem'
+import "./Payment.css";
+import PaymentItem from "./PaymentItem";
 
-function PaymentBody() {
+function PaymentBody({ paymentList }) {
   return (
-    <div className='PaymentBody'>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
-        <PaymentItem data= { {name: "Avinash", phone: "9786799765", balance: "2045", id: "12edb2ugs1gd276d"}}/>
+    <div className="PaymentBody">
+      {paymentList.length !== 0 ? (
+        paymentList.map((item) => {
+          return (
+            <PaymentItem
+              key={item._id}
+              data={{
+                name: item.name,
+                phone: item.phone,
+                balance: item.balance,
+                id: item._id,
+              }}
+            />
+          );
+        })
+      ) : (
+        <div className="noPayment">No Payment Available</div>
+      )}
     </div>
-  )
+  );
 }
 
-export default PaymentBody
+export default PaymentBody;

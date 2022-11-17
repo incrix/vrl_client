@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./BillItem.css";
 import DeleteIcon from "../../images/icons/delete-icon.svg";
+import useDoubleClick from "use-double-click";
 
 function BillItem({
   removeBillItem,
@@ -15,7 +16,13 @@ function BillItem({
   const [price, setPrice] = useState(billItem.Price);
   const [total, setTotal] = useState(billItem.Total);
 
-  
+  const buttonRef = useRef();
+
+  useDoubleClick({
+    onDoubleClick: () => removeBillItem(index),
+    ref: buttonRef,
+    latency: 250,
+  });
 
   useEffect(() => {
     const updateValue = () => {
@@ -24,8 +31,8 @@ function BillItem({
       const newBillItems = billItems;
       newBillItems[index] = billItem;
       setBillItems([...newBillItems]);
-    }
-    updateValue()
+    };
+    updateValue();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [quantity, price, billItem]);
 
@@ -35,17 +42,16 @@ function BillItem({
   };
 
   const handleProductQuantity = (e) => {
-
-    if(!isNaN(e.target.value) && e.target.value !== ''){
-    billItem.Quantity = parseFloat(e.target.value);
-    setQuantity(parseFloat(e.target.value));
+    if (!isNaN(e.target.value) && e.target.value !== "") {
+      billItem.Quantity = parseFloat(e.target.value);
+      setQuantity(parseFloat(e.target.value));
     }
   };
 
   const handleProductPrince = (e) => {
-    if(!isNaN(e.target.value) && e.target.value !== '') {
-    billItem.Price = parseFloat(e.target.value);
-    setPrice(parseFloat(e.target.value));
+    if (!isNaN(e.target.value) && e.target.value !== "") {
+      billItem.Price = parseFloat(e.target.value);
+      setPrice(parseFloat(e.target.value));
     }
   };
 
@@ -63,21 +69,16 @@ function BillItem({
         className="product-quantity"
         onChange={(e) => handleProductQuantity(e)}
         value={quantity}
-        onWheel={ event => event.currentTarget.blur() }
+        onWheel={(event) => event.currentTarget.blur()}
       />
       <input
         type="number"
         className="product-price"
         onChange={(e) => handleProductPrince(e)}
         value={price}
-        onWheel={ event => event.currentTarget.blur() }
+        onWheel={(event) => event.currentTarget.blur()}
       />
-      <button
-        className="delete-btn"
-        onClick={() => {
-          removeBillItem(index);
-        }}
-      >
+      <button className="delete-btn" ref={buttonRef}>
         <img src={DeleteIcon} alt="" />
       </button>
       <h6 className="product-total">{total}</h6>

@@ -1,25 +1,25 @@
-import React from 'react'
-import './ProductBody.css'
-import ProductItem from './ProductItem'
+import React from "react";
+import "./ProductBody.css";
+import ProductItem from "./ProductItem";
 
-function ProductBody() {
+function ProductBody({productList, getProductList}) {
   return (
-    <div className='ProductBody'>
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
-        <ProductItem data= { {id: "12edb2ugs1gd276d", product: "Ammonia", image_url: "https://www.uschemicalstorage.com/news/wp-content/uploads/2018/06/safe-ammonia-storage-solutions.jpg"}} />
+    <div className="ProductBody">
+      {productList.length !== 0 ?productList.map((item) => {
+        return <ProductItem
+          key={item._id}
+          data={{
+            id: item._id,
+            product: item.name,
+            image:
+              `${global.config.ROOT_IMG_URL}${item.image}`,
+          }}
+          getProductList={getProductList}
+        />;
+      }): <div className='noProduct'>No Product Available</div>
+    }
     </div>
-  )
+  );
 }
 
-export default ProductBody
+export default ProductBody;
