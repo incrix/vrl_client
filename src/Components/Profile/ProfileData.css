@@ -3,6 +3,7 @@
     height: 80%;
     background-color: #F1F1F1;
     padding: 10px 15px;
+    overflow-y: scroll;
 }
 
 .profileDataItem{

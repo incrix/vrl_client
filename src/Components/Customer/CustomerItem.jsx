@@ -15,7 +15,9 @@ function CustomerItem(props) {
       <h6>{id}</h6>
       <h6>{name}</h6>
       <h6>{phone}</h6>
-      <button onClick={routeCustomer}>View</button>
+      <div>
+        <button onClick={routeCustomer}>View</button>
+      </div>
     </div>
   )
 }

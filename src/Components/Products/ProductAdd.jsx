@@ -6,7 +6,8 @@ function ProductAdd(props) {
   const [productName, setProductName] = useState("");
   const {
     stateChange: { setAddProduct, addProduct },
-    getProductList
+    getProductList, setIsAlert, setAlertProp
+
   } = props;
 
   const token = localStorage.getItem("token");
@@ -23,6 +24,15 @@ function ProductAdd(props) {
     const formData = new FormData();
     formData.append("image", image);
 
+    if(productName === ""){
+      getWarningPopup("Product name is required");
+      return;
+    }
+    if (image === "") {
+      getWarningPopup("Image is required");
+      return;
+    }
+
     const path = await fetch(`${global.config.ROOT_URL}product/upload`, {
       method: "POST",
       body: formData,
@@ -35,7 +45,7 @@ function ProductAdd(props) {
         return data.path;
       })
       .catch((error) => {
-        console.log(error);
+        getFailedPopup(error.message);
       });
 
     fetch(`${global.config.ROOT_URL}product/add`, {
@@ -52,13 +62,69 @@ function ProductAdd(props) {
     })
       .then((response) => response.json())
       .then((data) => {
-        setAddProduct(!addProduct)
-        getProductList()
+        if (data.status === 200) {
+          getProductList();
+          setAddProduct(!addProduct);
+          getSuccessPopup(data.message);
+          return;
+        }
+        if (data.status === 400) {
+          getFailedPopup(data.message);
+          return;
+        }
       })
       .catch((error) => {
-        console.log(error);
+        getFailedPopup(error.message);
       });
       
+  };
+
+  const getWarningPopup = (message) => {
+    setIsAlert(true);
+    const popup = {
+      status: "Warning",
+      message: message,
+      buttonProperty: [
+        {
+          name: "Ok",
+          primary: true,
+          action: () => setIsAlert(false),
+        },
+      ],
+    };
+    setAlertProp(popup);
+  };
+
+  const getSuccessPopup = (message) => {
+    setIsAlert(true);
+    const popup = {
+      status: "Success",
+      message: message,
+      buttonProperty: [
+        {
+          name: "Ok",
+          primary: true,
+          action: () => setIsAlert(false),
+        },
+      ],
+    };
+    setAlertProp(popup);
+  };
+
+  const getFailedPopup = (message) => {
+    setIsAlert(true);
+    const popup = {
+      status: "Failed",
+      message: message,
+      buttonProperty: [
+        {
+          name: "Ok",
+          primary: true,
+          action: () => setIsAlert(false),
+        },
+      ],
+    };
+    setAlertProp(popup);
   };
 
   return (

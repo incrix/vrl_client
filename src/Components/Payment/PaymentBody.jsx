@@ -1,7 +1,7 @@
 import "./Payment.css";
 import PaymentItem from "./PaymentItem";
 
-function PaymentBody({ paymentList }) {
+function PaymentBody({ paymentList, setIsAlert, setAlertProp, getPaymentList }) {
   return (
     <div className="PaymentBody">
       {paymentList.length !== 0 ? (
@@ -15,6 +15,9 @@ function PaymentBody({ paymentList }) {
                 balance: item.balance,
                 id: item._id,
               }}
+              setIsAlert={setIsAlert}
+              setAlertProp={setAlertProp}
+              getPaymentList={getPaymentList}
             />
           );
         })

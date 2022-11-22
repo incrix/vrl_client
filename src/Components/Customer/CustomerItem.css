@@ -34,3 +34,8 @@
 .CustomerItem:nth-child(even) {
     background: #F9F8F8;
 }
+
+.CustomerItem > div {
+    text-align: right;
+    width: 200px;
+}

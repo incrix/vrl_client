@@ -20,7 +20,6 @@ function ProfileData({ setIsAlert, setAlertProp }) {
   }, []);
 
   const getCustomerDetails = () => {
-    console.log(`${global.config.ROOT_URL}customer/details`);
     fetch(`${global.config.ROOT_URL}customer/details`, {
       method: "POST",
       headers: {
@@ -43,7 +42,7 @@ function ProfileData({ setIsAlert, setAlertProp }) {
         }
       })
       .catch((error) => {
-        console.log(error);
+        getFailedPopup(error.message);
       });
   };
 

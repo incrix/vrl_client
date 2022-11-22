@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductBody.css";
 import ProductItem from "./ProductItem";
 
-function ProductBody({productList, getProductList}) {
+function ProductBody({productList, getProductList, setIsAlert, setAlertProp}) {
   return (
     <div className="ProductBody">
       {productList.length !== 0 ?productList.map((item) => {
@@ -14,6 +14,7 @@ function ProductBody({productList, getProductList}) {
             image:
               `${global.config.ROOT_IMG_URL}${item.image}`,
           }}
+          setIsAlert={setIsAlert} setAlertProp={setAlertProp}
           getProductList={getProductList}
         />;
       }): <div className='noProduct'>No Product Available</div>

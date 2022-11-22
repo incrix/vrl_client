@@ -19,7 +19,6 @@
 
 .search {
   display: flex;
-  width: 300px;
   justify-content: flex-end;
 }
 

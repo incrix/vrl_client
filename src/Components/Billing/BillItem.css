@@ -38,6 +38,7 @@
 
 .product-name{
     width: 140px;
+    
 }
 
 .product-quantity{
@@ -54,4 +55,62 @@
 
 .delete-btn{
     width: 80px;
+}
+.product{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.product-suggestion{
+    position:absolute;
+    background: white;
+    width: 450px;
+    height: 180px;
+    top: 105%;
+    z-index: 1 !important;
+    border: 2px solid #e0e0e0;
+    overflow-x: scroll;
+}
+
+.product-suggestion-item:last-child{
+    border-bottom: none;
+}
+
+.product-suggestion-item{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    background: white;
+    border-bottom: 2px solid #e0e0e0;
+    width: 100%;
+    top:0;
+}
+.product-suggestion-item:hover{
+    background: #e0e0e0;
+}
+
+.pro-name{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #4f4f4f;
+    text-align: left;
+}
+
+.pro-name::-webkit-scrollbar {
+    display: none;
+}
+
+.no-product{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    background: white;
+    border-bottom: 2px solid #e0e0e0;
+    width: 100%;
+    top:0;
 }

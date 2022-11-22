@@ -1,8 +1,9 @@
 import React from "react";
 import "./ProductItem.css";
 
-function ProductItem({ data, getProductList }) {
+function ProductItem({ data, getProductList, setIsAlert, setAlertProp }) {
   const { id, product, image } = data;
+  
 
   const token = localStorage.getItem("token");
 
@@ -19,11 +20,51 @@ function ProductItem({ data, getProductList }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        getProductList();
+        if (data.status === 200) {
+          getProductList();
+          getSuccessPopup(data.message);
+          return;
+        }
+        if (data.status === 400) {
+          getFailedPopup(data.message);
+          return;
+        }
       })
       .catch((error) => {
-        console.log(error);
+        getFailedPopup(error.message);
       });
+  };
+
+  const getSuccessPopup = (message) => {
+    setIsAlert(true);
+    const popup = {
+      status: "Success",
+      message: message,
+      buttonProperty: [
+        {
+          name: "Ok",
+          primary: true,
+          action: () => setIsAlert(false),
+        },
+      ],
+    };
+    setAlertProp(popup);
+  };
+
+  const getFailedPopup = (message) => {
+    setIsAlert(true);
+    const popup = {
+      status: "Failed",
+      message: message,
+      buttonProperty: [
+        {
+          name: "Ok",
+          primary: true,
+          action: () => setIsAlert(false),
+        },
+      ],
+    };
+    setAlertProp(popup);
   };
 
   return (

@@ -4,9 +4,12 @@ import PaymentBody from "./PaymentBody";
 import PaymentHead from "./PaymentHead";
 import { useNavigate } from "react-router-dom";
 import VerifyAdmin from "../VerifyAdmin";
+import PopUp from "../PopUp";
 
 function Payment() {
   const [paymentList, setPaymentList]=useState([])
+  const [isAlert, setIsAlert] = useState(false)
+  const [alertProp, setAlertProp] = useState({})
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -46,8 +49,9 @@ function Payment() {
     <div className="Payment">
       <div className="Payment-content">
         <PaymentHead setPaymentList={setPaymentList}/>
-        <PaymentBody paymentList={paymentList}/>
+        <PaymentBody paymentList={paymentList} setIsAlert={setIsAlert} setAlertProp={setAlertProp} getPaymentList={getPaymentList}/>
       </div>
+      {isAlert ?<PopUp popup={alertProp} /> : ""}
     </div>
   );
 }
