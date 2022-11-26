@@ -22,6 +22,10 @@
   justify-content: flex-end;
 }
 
+.pay-search{
+  width: 300px;
+}
+
 .search > input {
   border: none;
   outline: none;
@@ -35,6 +39,8 @@
   border-radius: 2px;
   padding: 0 10px;
 }
+
+
 
 .search > button {
   border: none;

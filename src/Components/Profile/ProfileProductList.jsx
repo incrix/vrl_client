@@ -21,7 +21,7 @@ function ProfileProductList() {
         setProductList(data);
       })
       .catch((error) => {
-        console.log(error);
+        return(error);
       });
       // eslint-disable-next-line
   }, []);

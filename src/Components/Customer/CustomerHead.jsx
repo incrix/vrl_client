@@ -26,7 +26,7 @@ function CustomerHead({ setCustomerList }) {
           setCustomerList(data);
         })
         .catch((error) => {
-          console.log(error);
+          return(error);
         });
     } else {
       fetch(`${global.config.ROOT_URL}customer/list`, {
@@ -41,7 +41,7 @@ function CustomerHead({ setCustomerList }) {
           setCustomerList(data);
         })
         .catch((error) => {
-          console.log(error);
+          return(error);
         });
     }
   };

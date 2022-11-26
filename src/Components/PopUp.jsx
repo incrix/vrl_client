@@ -29,7 +29,7 @@ const styles = {
     boxShadow: `4px 4px 8px rgba(0, 0, 0, 0.2)`,
   },
   text: {
-    margin: `20px 15px 0 15px`,
+    margin: `20px 25px 0 25px`,
     textAlign: "center",
   },
   image: {

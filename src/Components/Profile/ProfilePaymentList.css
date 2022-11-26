@@ -11,13 +11,28 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
-    background-color: #F1F1F1;
+    /* background-color: #F1F1F1; */
+}
+
+.ListItem:nth-child(odd) {
+    background: #F1F1F1;
+}
+.ListItem:nth-child(even) {
+    background: #F9F8F8;
 }
 
 .ListItem h6{
-    width: 130px;
-    font-size: 14px;
+    width: 250px;
+    font-size: 16px;
     font-weight: 500;
+}
+
+.ListItem h6:nth-child(2){
+    text-align: center;
+}
+
+.ListItem h6:last-child{
+    text-align: right;
 }
 
 .noPayment{

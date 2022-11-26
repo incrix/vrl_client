@@ -51,7 +51,7 @@ function BillItem({
         setProductList(data);
       })
       .catch((error) => {
-        console.log(error);
+        return(error);
       });
   };
 
@@ -72,6 +72,7 @@ function BillItem({
     billItem.productId = id;
     billItem.productName = name;
     setSearch(name);
+    setIsSearch(false);
   };
 
   const handleProductQuantity = (e) => {
@@ -111,7 +112,7 @@ function BillItem({
             setTimeout(() => {
               setProductList([]);
               setIsSearch(false);
-            }, 100);
+            }, 500);
           }}
         />
         {isSearch ? (

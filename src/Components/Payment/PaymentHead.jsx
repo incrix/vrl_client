@@ -26,7 +26,7 @@ function PaymentHead({setPaymentList}) {
           setPaymentList(data);
         })
         .catch((error) => {
-          console.log(error);
+          return(error);
         });
     } else {
       fetch(`${global.config.ROOT_URL}payment/list`, {
@@ -41,7 +41,7 @@ function PaymentHead({setPaymentList}) {
           setPaymentList(data);
         })
         .catch((error) => {
-          console.log(error);
+         return(error);
         });
     }
   };
@@ -51,7 +51,7 @@ function PaymentHead({setPaymentList}) {
         <h6>Name</h6>
         <h6>Phone</h6>
         <h6>Balance</h6>
-        <div className='search'>
+        <div className='search pay-search'>
             <input type='number'  maxLength="10" minLength="10" placeholder='Enter Phone Number' onChange={(e) => onSearch(e)}/>
         </div>
     </div>

@@ -16,6 +16,7 @@ import PageNotFound from "./Components/PageNotFound/PageNotFound";
 
 function App() {
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false)
   const navigate = useNavigate();
   const [pageTitle, setPageTitle] = useState("");
   const { ProfileNameContext } = Context;
@@ -30,8 +31,18 @@ function App() {
         navigate("/login");
       }
     });
+    window.addEventListener("resize", handleResize)
     // eslint-disable-next-line
   }, []);
+
+  const handleResize = () => {
+    if (window.innerWidth < 1070) {
+        setIsMobile(true)
+    } else {
+        setIsMobile(false)
+    }
+  }
+  
 
   return (
     <>
@@ -40,7 +51,7 @@ function App() {
         <SecondNav pathName={location.pathname} />
       </ProfileNameContext.Provider>
       <main>
-        <Routes>
+        {!isMobile ? <Routes>
           <Route path="/" element={<Manage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/payment" element={<Payment />} />
@@ -54,7 +65,7 @@ function App() {
           </Route>
           <Route path="/billing" element={<Billing />} />
           <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        </Routes> : <div className="mobileView">Application only compatible for Desktop mode</div>}
       </main>
     </>
   );

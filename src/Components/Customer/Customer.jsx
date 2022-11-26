@@ -35,7 +35,7 @@ function Customer() {
       setCustomerList(data)
     })
     .catch((error) => {
-      console.log(error)
+      return(error)
     });
     // eslint-disable-next-line
   },[])

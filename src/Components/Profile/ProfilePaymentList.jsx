@@ -21,7 +21,7 @@ function ProfilePaymentList() {
         setPaymentList(data);
       })
       .catch((error) => {
-        console.log(error);
+        return(error);
       });
       // eslint-disable-next-line
   }, []);

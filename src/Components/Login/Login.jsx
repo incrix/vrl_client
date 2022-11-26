@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import VerifyAdmin from "../VerifyAdmin";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,21 @@ function Login() {
   const [error, setError] = useState("");
   const [iserror, setIserror] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      VerifyAdmin().then((isValid) => {
+        if (!isValid || isValid instanceof Error) {
+          return
+        }
+        if(isValid){
+          navigate("/");
+        }
+      });
+    }
+    
+  }, [navigate]);
 
   const handleLogin = () => {
     const payload = {
@@ -34,7 +50,7 @@ function Login() {
       })
       .catch(function (error) {
         setIserror(true);
-        setError(error.response.data.message);
+        setError(error);
       });
   };
 

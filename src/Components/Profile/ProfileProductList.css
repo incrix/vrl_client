@@ -6,11 +6,14 @@
 
 .ProfileProductItem{
     width: 100%;
-    background-color: #F1F1F1 ;
+    display: flex;
+    flex-direction: row;
+
 }
 
 .ProductListItemHead button{
     background-color: transparent;
+    font-size: 16px;
     color: #022964;
     font-size: 18px;
     font-weight: 700;
@@ -18,15 +21,20 @@
     outline: none;
     cursor: pointer;
     width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
+
 .ProductListItem h6{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
+    width: 250px;
+    
+    
 }
+
+.ProductListItem h6::-webkit-scrollbar {
+    display: none;
+  }
 
 .ProductListItemHead{
     display: flex;
@@ -34,20 +42,32 @@
     align-items: center;
     height: 60px;
     padding: 0 15px;
-    background-color: #F1F1F1;
+    width: 100%;
+    text-align: center;
+    /* background-color: #F1F1F1; */
 }
 
 .ProductListItemBody{
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    background-color: rgb(228, 228, 228) ;
+    width: 90%;
+    margin-bottom: 20px;
+    text-align: center;
 }
+
+.ProductListItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 .ListItemHead{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    background-color: #F1F1F1 ;
+    background-color: rgb(221, 218, 218) ;
+    /* background-color: #F1F1F1 ; */
 }
 
 .ListItemHead h6{
@@ -65,7 +85,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 15px;
-    background-color: #F1F1F1 ;
+    background-color: rgb(221, 218, 218) ;
+    /* background-color: #F1F1F1 ; */
 }
 
 .ListItemFoot h6{
@@ -79,7 +100,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 2px 15px;
-    background-color: #F1F1F1 ;
+    
+    /* background-color: #F1F1F1 ; */
+}
+
+.ProductListItem:nth-child(odd) {
+    background: #F1F1F1;
+}
+.ProductListItem:nth-child(even) {
+    background: #F9F8F8;
 }
 
 .ListItemBody h6{

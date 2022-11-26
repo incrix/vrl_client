@@ -9,7 +9,8 @@ function ProductListItem({data}) {
       <div className="ProductListItem">
         <div className="ProductListItemHead">
           <h6>{data._id}</h6>
-          <h6>{"₹ " + data.totalAmount}</h6>
+          
+          <h6>{"Date: " + data.date.slice(0,10)}</h6>
           {isExpanded ? (
             <button onClick={() => setIsExpanded(false)}>
               Collapse <img src={UpIcon} alt="" />
@@ -34,9 +35,13 @@ function ProductListItem({data}) {
                 return <ListItem key={index} data={item}/>
             })}
             <div className="ListItemFoot">
-              <h6>{"Date: " + data.date.slice(0,10)}</h6>
+              {/* <h6>{"Date: " + data.date.slice(0,10)}</h6> */}
               <h6>{"Total: ₹ " + data.totalAmount}</h6>
               <h6>{"Paid: ₹ " + data.paidAmount}</h6>
+              {/* {console.log(parseInt(data.totalAmount) -  parseInt(data.paidAmount))} */}
+              <h6>{`Balance: ₹ ${data.totalAmount - data.paidAmount}`}</h6>
+
+              
             </div>
           </div>
         )}

@@ -1,4 +1,4 @@
 module.exports = global.config = {
-    ROOT_URL: "http://localhost:5050/api/admin/",
-    ROOT_IMG_URL: "http://localhost:5050/"
+    ROOT_URL: "http://vrl.herokuapp.com/api/admin/",
+    ROOT_IMG_URL: "http://vrl.herokuapp.com/"
 };

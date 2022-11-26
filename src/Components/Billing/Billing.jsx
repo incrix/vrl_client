@@ -22,6 +22,11 @@ function Billing() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   useEffect(() => {
+    if(phone.length < 10){
+      setName("");
+    }
+  }, [phone]);
+  useEffect(() => {
     if (!token) {
       navigate("/login");
     }
@@ -76,18 +81,26 @@ function Billing() {
   };
 
   const clearBillItems = () => {
-    getWarningPopup("Bill Cleared", [
-      { name: "Cancel", primary: false, action: () => setIsAlert(false) },
-      {
-        name: "Clear",
-        primary: true,
-        action: () => {
-          setBillItems([]);
-          setGrandTotal(0);
-          setIsAlert(false);
+    if(billItems.length !== 0) {
+      getWarningPopup("Do you want to clear the bill?", [
+        { name: "Cancel", primary: false, action: () => setIsAlert(false) },
+        {
+          name: "Clear",
+          primary: true,
+          action: () => {
+            setBillItems([]);
+            setGrandTotal(0);
+            setIsAlert(false);
+          },
         },
-      },
-    ]);
+      ]);
+    }
+    else{
+      getWarningPopup("No items to clear!", [
+        { name: "OK", primary: true, action: () => setIsAlert(false) },
+      ]);
+    }
+    
   };
 
   const removeBillItem = useCallback(
@@ -130,7 +143,6 @@ function Billing() {
       paidAmount: amountPaid,
       orderList,
     });
-    console.log(data);
     fetch(`${global.config.ROOT_URL}purchase/add`, {
       method: "POST",
       headers: {
@@ -141,10 +153,9 @@ function Billing() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.status === 200) {
           getSuccessPopup(
-            "Invoice Raised Successfully InvoicesId: " + data.data.purchaseId
+            `Invoice Raised Successfully\nInvoice Id: ${data.data.purchaseId}`
           );
           setBillItems([]);
           setAmountPaid("");

@@ -39,7 +39,7 @@ function Payment() {
         setPaymentList(data)
       })
       .catch((error) => {
-        console.log(error)
+        return(error)
       });
   }
 

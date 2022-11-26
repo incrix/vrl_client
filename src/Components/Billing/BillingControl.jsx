@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import "./BillingControl.css";
 
-function BillingControl({ addBillObject, clearBillItems, scrollToBottom, phoneState, nameState }) {
+function BillingControl({
+  addBillObject,
+  clearBillItems,
+  scrollToBottom,
+  phoneState,
+  nameState,
+}) {
   const [name, setName] = nameState;
   const [phone, setPhone] = phoneState;
   const [isSearch, setIsSearch] = useState(false);
@@ -9,42 +15,42 @@ function BillingControl({ addBillObject, clearBillItems, scrollToBottom, phoneSt
   const token = localStorage.getItem("token");
 
   const handleSearchClick = (phone, name) => {
-    setIsSearch(!isSearch);
     setPhone(phone);
     setName(name);
-  }
+    setIsSearch(!isSearch);
+  };
 
   const handleName = (e) => {
     setName(e.target.value);
-  }
+  };
 
   const handleSearch = (e) => {
     const value = e.target.value;
     setPhone(value);
-    if(value.length > 0) {
+    if (value.length > 0) {
       setIsSearch(true);
     }
-    if(value.length === 0) {
+    if (value.length === 0) {
       setIsSearch(false);
-      return
+      return;
     }
-      fetch(`${global.config.ROOT_URL}customer/search`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          phone: value,
-        }),
+    fetch(`${global.config.ROOT_URL}customer/search`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        phone: value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setCustomerList(data);
       })
-        .then((response) => response.json())
-        .then((data) => {
-          setCustomerList(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      .catch((error) => {
+        return error;
+      });
   };
 
   return (
@@ -62,24 +68,36 @@ function BillingControl({ addBillObject, clearBillItems, scrollToBottom, phoneSt
               setTimeout(() => {
                 setCustomerList([]);
                 setIsSearch(false);
-              }, 100);
+              }, 500);
             }}
           />
-          {isSearch ? <div className="suggestion">
-            {customerList &&
-              customerList.map((item, index) => {
-                return (
-                  <div key={index} className="suggestion-item" onClick={( ) => handleSearchClick(item.phone, item.name)}>
-                    <p className="cus-name">{item.name}</p>
-                    <p className="cus-num">{item.phone}</p>
-                  </div>
-                );
-              })}
-          </div> : null}
+          {isSearch ? (
+            <div className="suggestion">
+              {customerList &&
+                customerList.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="suggestion-item"
+                      onClick={() => {handleSearchClick(item.phone, item.name)}}
+                    >
+                      <p className="cus-name">{item.name}</p>
+                      <p className="cus-num">{item.phone}</p>
+                    </div>
+                  );
+                })}
+            </div>
+          ) : null}
         </div>
         <div className="customerName search">
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" placeholder="" value={name} onChange={handleName}/>
+          <input
+            type="text"
+            name="name"
+            placeholder=""
+            value={name}
+            onChange={handleName}
+          />
         </div>
       </div>
       <div className="buttonControl">
@@ -88,6 +106,7 @@ function BillingControl({ addBillObject, clearBillItems, scrollToBottom, phoneSt
         </button>
         <button
           onClick={() => {
+            console.log(phone);
             addBillObject();
             scrollToBottom();
           }}

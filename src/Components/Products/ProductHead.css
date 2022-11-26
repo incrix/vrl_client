@@ -31,7 +31,6 @@
     font-weight: 700;
     margin-left: 0 10px;
     cursor: pointer;
-    transition: all 0.5s ease;
 }
 
 .productCancelBtn{
@@ -46,7 +45,6 @@
     font-weight: 700;
     margin-left: 0 10px;
     cursor: pointer;
-    transition: all 0.5s ease;
 }
 
 .ProductHead> .search{

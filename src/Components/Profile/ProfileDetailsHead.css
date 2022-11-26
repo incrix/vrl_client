@@ -23,12 +23,12 @@
 }
 
 .ProfileDetailsFoot{
-    position: sticky;
+    /* position: sticky; */
     bottom: 0;
     display:flex;
     height: 60px;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     padding: 0 15px;
     background-color: #F9F8F8;
 }
@@ -37,4 +37,5 @@
     font-size: 18px;
     color: #4F4F4F;
     font-weight: 700;
+    display: block;
 }

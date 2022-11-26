@@ -31,7 +31,7 @@ function ProductHead(props) {
           setProductList(data);
         })
         .catch((error) => {
-          console.log(error);
+          return(error);
         });
     } else {
       fetch(`${global.config.ROOT_URL}product/list`, {
@@ -44,7 +44,7 @@ function ProductHead(props) {
           setProductList(data);
         })
         .catch((error) => {
-          console.log(error);
+          return(error);
         });
     }
   };
